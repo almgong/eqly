@@ -53,7 +53,7 @@ const NewWayForm = ({ onSubmit, onCancel, defaultWayKey, defaultWayInfos }) => {
               <InputGroupAddon addonType="append">
                 <InputGroupText>$</InputGroupText>
               </InputGroupAddon>
-              <Input value={wayInfo.amount} onChange={(e) => onAmountChange(index, e.target.value)} type="number" id={`amount-${index}`} name={`amount-${index}`} />
+              <Input autoFocus={index != 0 && index === wayInfos.length - 1} value={wayInfo.amount} onChange={(e) => onAmountChange(index, e.target.value)} type="number" id={`amount-${index}`} name={`amount-${index}`} />
             </InputGroup>
           </FormGroup>
         )}
