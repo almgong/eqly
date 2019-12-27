@@ -24,7 +24,7 @@ const WaysTable = ({ ways, taxRate, tipRate, onRowClick }) => {
   return (
     <React.Fragment>
       <div className="mb-2">The total calculated cost is ${totalSum.toFixed(2)}. Please verify that this is correct.</div>
-      <Table>
+      <Table hover striped>
         <thead>
           <tr>
             <th>Way</th>
