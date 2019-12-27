@@ -5,3 +5,7 @@ body {
 .nav-link {
   cursor: pointer;
 }
+
+table td:hover {
+  cursor: pointer;
+}

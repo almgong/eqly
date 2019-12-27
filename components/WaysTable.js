@@ -1,7 +1,7 @@
 import { Table } from 'reactstrap';
 
 // this component may benefit from bring memoized
-const WaysTable = ({ ways, taxRate, tipRate }) => {
+const WaysTable = ({ ways, taxRate, tipRate, onRowClick }) => {
   // preprocess
   let totalSum = 0;
   const rows = Object.keys(ways).map((wayKey) => {
@@ -36,7 +36,7 @@ const WaysTable = ({ ways, taxRate, tipRate }) => {
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.wayKey}>
+            <tr key={row.wayKey} onClick={() => onRowClick(row.wayKey)}>
               <td>{row.wayKey}</td>
               <td className="text-danger">${row.sum.toFixed(2)}</td>
               <td className="text-danger">${row.tax.toFixed(2)}</td>
