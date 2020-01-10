@@ -60,7 +60,7 @@ const IndexPage = ({ lastActiveTab }) => {
 
 IndexPage.getInitialProps = () => {
   return {
-    lastActiveTab: SPLIT_TYPES.EVENLY
+    lastActiveTab: SPLIT_TYPES.INDIVIDUALLY
   }
 };
 

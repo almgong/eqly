@@ -4,6 +4,7 @@ import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import SplitIndividuallyForm from "../SplitIndividuallyForm";
 import WaysTable from '../WaysTable';
 import NewWayForm from '../NewWayForm';
+import ReceiptScanner from '../ReceiptScanner';
 
 const SplitIndividually = () => {
   const [wayModalOpen, setWayModalOpen] = useState(false);
@@ -25,6 +26,10 @@ const SplitIndividually = () => {
 
   const [formValues, setFormValues] = useState({ tipRate: 15, taxRate: 7.25 });
 
+  const onReceiptScan = (newWays) => {
+    setWays({ ...ways, ...newWays });
+  };
+
   return (
     <React.Fragment>
       <h4>Split individually</h4>
@@ -35,7 +40,8 @@ const SplitIndividually = () => {
 
       <h5>Ways</h5>
 
-      <Button className="mb-3" color="primary" onClick={toggleWayModal}>+ Add way</Button>
+      <Button className="mb-3 mr-2" color="primary" onClick={toggleWayModal}>+ Add way</Button>
+      <ReceiptScanner onReceiptScan={onReceiptScan} />
 
       <WaysTable ways={ways} taxRate={formValues.taxRate} tipRate={formValues.tipRate} onRowClick={onRowClick} />
 
