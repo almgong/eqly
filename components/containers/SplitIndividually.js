@@ -6,12 +6,12 @@ import WaysTable from '../WaysTable';
 import NewWayForm from '../NewWayForm';
 
 const SplitIndividually = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const toggleModal = () => setModalOpen(!modalOpen);
+  const [wayModalOpen, setWayModalOpen] = useState(false);
+  const toggleWayModal = () => setWayModalOpen(!wayModalOpen);
 
   const [modalWayKey, setModalWayKey] = useState(null);
   const onRowClick = (wayKey) => {
-    setModalOpen(true);
+    setWayModalOpen(true);
     setModalWayKey(wayKey);
   }
 
@@ -19,7 +19,7 @@ const SplitIndividually = () => {
   const [ways, setWays] = useState({});
   const onNewWayFormSubmit = (wayKey, wayInfo) => {
     setWays({ ...ways, [wayKey]: wayInfo});
-    setModalOpen(false);
+    setWayModalOpen(false);
     setModalWayKey(null);
   };
 
@@ -35,14 +35,14 @@ const SplitIndividually = () => {
 
       <h5>Ways</h5>
 
-      <Button className="mb-3" color="primary" onClick={() => setModalOpen(true)}>+ Add way</Button>
+      <Button className="mb-3" color="primary" onClick={toggleWayModal}>+ Add way</Button>
 
       <WaysTable ways={ways} taxRate={formValues.taxRate} tipRate={formValues.tipRate} onRowClick={onRowClick} />
 
-      <Modal isOpen={modalOpen} toggle={toggleModal}>
+      <Modal isOpen={wayModalOpen} toggle={toggleWayModal}>
         <ModalHeader>Add a new way</ModalHeader>
         <ModalBody>
-          <NewWayForm onSubmit={onNewWayFormSubmit} onCancel={toggleModal} defaultWayKey={modalWayKey} defaultWayInfos={modalWayKey ? ways[modalWayKey] : null} />
+          <NewWayForm onSubmit={onNewWayFormSubmit} onCancel={toggleWayModal} defaultWayKey={modalWayKey} defaultWayInfos={modalWayKey ? ways[modalWayKey] : null} />
         </ModalBody>
       </Modal>
     </React.Fragment>
