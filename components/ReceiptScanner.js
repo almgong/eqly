@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button, Modal, ModalBody, ModalHeader, Row, Col, Alert, Progress } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import Tesseract, { createWorker } from 'tesseract.js';
 
 const MEDIA_WIDTH = 300;
@@ -178,7 +176,6 @@ export default function ReceiptScanner({ onReceiptScan }) {
   return (
     <React.Fragment>
       <Button className="mb-3" color="success" onClick={toggleScanModal}>
-        <FontAwesomeIcon size="1x" icon={faCamera} />
         Scan receipt
       </Button>
 
